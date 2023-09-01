@@ -1,6 +1,7 @@
 package tests;
 
 import core.BaseTests;
+import io.appium.java_client.MobileBy;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
@@ -29,8 +30,8 @@ public class FormTest extends BaseTests {
 
     @Test
     public void typeInInputName() {
-        page.writeNome("Wagner");
-        assertEquals("Wagner", page.getNome());
+        page.writeNome("Rafael");
+        assertEquals("Rafael", page.getNome());
     }
 
 
@@ -77,17 +78,34 @@ public class FormTest extends BaseTests {
     }
 
     @Test()
-    public void deveRealizarCadastroDemorado(){
-        page.writeNome("Wagner");
+    public void mustRegisterDelayed(){
+        page.writeNome("Rafael");
 
         driver.manage().timeouts().implicitlyWait(0, TimeUnit.SECONDS);
         page.saveSlowly();
 
         WebDriverWait wait = new WebDriverWait(driver, 10);
-        wait.until(ExpectedConditions.presenceOfElementLocated(By.xpath("//*[@text='Nome: Wagner']")));
+        wait.until(ExpectedConditions.presenceOfElementLocated(By.xpath("//*[@text='Nome: Rafael']")));
 
-        assertEquals("Nome: Wagner", page.getNomeRegistered());
+        assertEquals("Nome: Rafael", page.getNomeRegistered());
 
         driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
+    }
+
+    @Test()
+    public void  mustChangeDate(){
+        page.clickByText("01/01/2000");
+        page.clickByText("20");
+        page.clickByText("OK");
+        assertTrue(page.isElementPresentByText("20/01/2000"));
+    }
+
+    @Test()
+    public void  mustChangeTime(){
+        page.clickByText("09:00");
+        page.click(MobileBy.AccessibilityId("10"));
+        page.click(MobileBy.AccessibilityId("40"));
+        page.clickByText("OK");
+        assertTrue(page.isElementPresentByText("10:40"));
     }
 }

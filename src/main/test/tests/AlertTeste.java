@@ -7,7 +7,7 @@ import org.junit.Test;
 import pages.AlertaPage;
 import pages.FormularioPage;
 
-import static junit.framework.TestCase.assertEquals;
+import static junit.framework.TestCase.*;
 
 public class AlertTeste extends BaseTests {
     private AlertaPage page = new AlertaPage();
@@ -32,5 +32,17 @@ public class AlertTeste extends BaseTests {
         assertEquals("Confirmado", page.obterMensagemAlerta());
 
         page.clickByText("SAIR");
+    }
+
+    @Test
+    public void mustClickOutsideAlert(){
+        page.clickByText("ALERTA SIMPLES");
+
+        assertTrue(page.isElementPresentByText("Pode clicar no OK ou fora da caixa para sair"));
+
+        pause(1000);
+        page.tap(200,150);
+
+        assertFalse(page.isElementPresentByText("Pode clicar no OK ou fora da caixa para sair"));
     }
 }

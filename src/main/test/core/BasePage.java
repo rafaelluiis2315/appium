@@ -3,6 +3,8 @@ package core;
 import static core.BaseTests.driver;
 
 import io.appium.java_client.MobileElement;
+import io.appium.java_client.TouchAction;
+import io.appium.java_client.touch.offset.PointOption;
 import org.openqa.selenium.By;
 
 import java.util.List;
@@ -37,5 +39,9 @@ public class BasePage {
     public boolean isElementPresentByText(String texto) {
         List<MobileElement> elementos = driver.findElements(By.xpath("//*[@text='"+texto+"']"));
         return !elementos.isEmpty();
+    }
+
+    public void tap(int x, int y) {
+        new TouchAction<>(driver).press(PointOption.point(x, y)).perform();
     }
 }

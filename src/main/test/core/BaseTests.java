@@ -68,4 +68,12 @@ public class BaseTests {
             e.printStackTrace();
         }
     }
+
+    public void pause(long tempo){
+        try {
+            Thread.sleep(tempo);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+    }
 }

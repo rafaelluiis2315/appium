@@ -12,6 +12,7 @@ import org.openqa.selenium.TakesScreenshot;
 import org.openqa.selenium.remote.DesiredCapabilities;
 import tests.FormTest;
 
+import java.io.File;
 import java.io.IOException;
 import java.io.Serializable;
 import java.net.MalformedURLException;
@@ -62,7 +63,10 @@ public class BaseTests {
         try {
             byte[] screenshotBytes = ((TakesScreenshot) driver).getScreenshotAs(OutputType.BYTES);
 
-            Path screenshotPath = Paths.get("target/screenshots", testName.getMethodName() + ".png");
+            File dirScreen = new File("target/screenshots");
+            if (!dirScreen.exists()){ dirScreen.mkdirs(); }
+
+            Path screenshotPath = Paths.get(dirScreen.getPath(), testName.getMethodName() + ".png");
             Files.write(screenshotPath, screenshotBytes);
         } catch (IOException e) {
             e.printStackTrace();

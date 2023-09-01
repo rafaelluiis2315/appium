@@ -23,12 +23,12 @@ public class AlertTest extends BaseTests {
     public void confirmAlert(){
         page.clickByText("ALERTA CONFIRM");
 
-        assertEquals("Info", page.obterTituloAlerta());
-        assertEquals("Confirma a operação?", page.obterMensagemAlerta());
+        assertEquals("Info", page.getAlertTitle());
+        assertEquals("Confirma a operação?", page.getMessageAlert());
 
         page.clickByText("CONFIRMAR");
 
-        assertEquals("Confirmado", page.obterMensagemAlerta());
+        assertEquals("Confirmado", page.getMessageAlert());
 
         page.clickByText("SAIR");
     }

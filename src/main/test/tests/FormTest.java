@@ -108,4 +108,13 @@ public class FormTest extends BaseTests {
         page.clickByText("OK");
         assertTrue(page.isElementPresentByText("10:40"));
     }
+
+    @Test
+    public void mustInteractWithSeekBar(){
+        page.clickSeekBar(0.65);
+
+        page.save();
+
+        assertEquals("Slider: 65", page.getSliderRegistered());
+    }
 }

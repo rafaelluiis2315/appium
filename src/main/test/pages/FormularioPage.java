@@ -2,7 +2,10 @@ package pages;
 
 import core.BasePage;
 import io.appium.java_client.MobileBy;
+import io.appium.java_client.MobileElement;
 import org.openqa.selenium.By;
+
+import static core.BaseTests.driver;
 
 public class FormularioPage extends BasePage {
     public void writeNome(String nome) {
@@ -59,5 +62,23 @@ public class FormularioPage extends BasePage {
 
     public String getSwitchRegistered(){
         return getText(By.xpath("//android.widget.TextView[starts-with(@text, 'Checkbox:')]"));
+    }
+
+    public String getSliderRegistered() {
+        return getText(By.xpath("//android.widget.TextView[starts-with(@text, 'Slider:')]"));
+    }
+
+    public void clickSeekBar(double position){
+        MobileElement seek = driver.findElement(MobileBy.AccessibilityId("slid"));
+
+        int delta = 50; // Space between start of element and start of slide
+
+        int xInit = seek.getLocation().x + delta;
+
+        int x = (int) (xInit + (seek.getSize().width - delta) * position);
+
+        int y = (seek.getLocation().y) + (seek.getSize().height / 2);
+
+        tap(x, y);
     }
 }

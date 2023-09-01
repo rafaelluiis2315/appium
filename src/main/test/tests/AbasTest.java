@@ -8,7 +8,7 @@ import pages.AbasPage;
 
 import static junit.framework.TestCase.assertTrue;
 
-public class AbasTeste extends BaseTests {
+public class AbasTest extends BaseTests {
     private AbasPage page = new AbasPage();
     @Before
     public void setUpForm(){

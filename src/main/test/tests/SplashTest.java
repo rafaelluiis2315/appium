@@ -8,7 +8,7 @@ import pages.SplashPage;
 
 import static junit.framework.TestCase.assertTrue;
 
-public class SplashTeste extends BaseTests {
+public class SplashTest extends BaseTests {
     private SplashPage page = new SplashPage();
     @Before
     public void setUpForm(){

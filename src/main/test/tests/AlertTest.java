@@ -5,11 +5,10 @@ import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 import pages.AlertaPage;
-import pages.FormularioPage;
 
 import static junit.framework.TestCase.*;
 
-public class AlertTeste extends BaseTests {
+public class AlertTest extends BaseTests {
     private AlertaPage page = new AlertaPage();
     @Before
     public void setUpForm(){

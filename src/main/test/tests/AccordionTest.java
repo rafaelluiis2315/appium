@@ -8,7 +8,7 @@ import pages.AccordionPage;
 
 import static org.junit.Assert.assertEquals;
 
-public class AccordionTeste extends BaseTests {
+public class AccordionTest extends BaseTests {
     private AccordionPage page = new AccordionPage();
     @Before
     public void setUpForm(){

@@ -27,9 +27,11 @@ public class BaseTests {
     @Rule
     public TestName testName = new TestName();
     private static final URL apkPath = FormTest.class.getResource("/CTAppium_2_0.apk");
+    private static final File dirScreen = new File("target/screenshots");
 
     @BeforeClass
     public static void setUp() {
+        deleteScreenShots();
         DesiredCapabilities desiredCapabilities = new DesiredCapabilities();
         desiredCapabilities.setCapability("platformName", "Android");
         desiredCapabilities.setCapability("appium:deviceName", "Pixel 7");
@@ -63,7 +65,6 @@ public class BaseTests {
         try {
             byte[] screenshotBytes = ((TakesScreenshot) driver).getScreenshotAs(OutputType.BYTES);
 
-            File dirScreen = new File("target/screenshots");
             if (!dirScreen.exists()){ dirScreen.mkdirs(); }
 
             Path screenshotPath = Paths.get(dirScreen.getPath(), testName.getMethodName() + ".png");
@@ -78,6 +79,15 @@ public class BaseTests {
             Thread.sleep(tempo);
         } catch (InterruptedException e) {
             e.printStackTrace();
+        }
+    }
+
+    private static void deleteScreenShots(){
+        File[] screens = dirScreen.listFiles();
+        if (screens != null && 0 < screens.length){
+            for (File file : screens){
+                file.delete();
+            }
         }
     }
 }

@@ -84,13 +84,27 @@ public class BasePage {
         ));
     }
 
-    public void swipe(double inicio, double fim) {
+    public void swipe(double start, double end) {
         Dimension size = driver.manage().window().getSize();
 
         int y = size.height / 2;
 
-        int start_x = (int) (size.width * inicio);
-        int end_x = (int) (size.width * fim);
+        int start_x = (int) (size.width * start);
+        int end_x = (int) (size.width * end);
+
+        new TouchAction<>(driver)
+                .press(PointOption.point(new Point(start_x, y)))
+                .waitAction(WaitOptions.waitOptions(Duration.ofMillis(500)))
+                .moveTo(PointOption.point(new Point(end_x, y)))
+                .release()
+                .perform();
+    }
+
+    public void swipeElement(MobileElement element, double start, double end) {
+        int y = element.getLocation().y + (element.getSize().height / 2);
+
+        int start_x = (int) (element.getSize().width * start);
+        int end_x = (int) (element.getSize().width * end);
 
         new TouchAction<>(driver)
                 .press(PointOption.point(new Point(start_x, y)))

@@ -9,4 +9,8 @@ public class MenuPage extends BasePage {
         scrollDown();
         clickByText("Drag and drop");
     }
+
+    public void accessSBNativo(){
+        clickByText("SeuBarriga Nativo");
+    }
 }

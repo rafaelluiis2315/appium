@@ -122,4 +122,11 @@ public class BasePage {
                 .release()
                 .perform();
     }
+
+    public void clickLong(By by) {
+        new TouchAction<>(driver)
+                .longPress(PointOption.point(driver.findElement(by).getCenter()))
+                .release()
+                .perform();
+    }
 }

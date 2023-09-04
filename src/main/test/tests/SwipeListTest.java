@@ -21,7 +21,7 @@ public class SwipeListTest extends BaseTests {
     }
 
     @Test
-    public void deveResolverDesafio(){
+    public void mustInteractionWithSwiperList(){
         page.swipeElementRight("Opção 1");
 
         page.chooseMoreOrLess("+");

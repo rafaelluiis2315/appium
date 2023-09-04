@@ -21,7 +21,7 @@ public class SwipeTest extends BaseTests {
     }
 
     @Test
-    public void deveResolverDesafio(){
+    public void mustInteractionWithSwiper(){
         assertTrue(page.isElementPresentByText("a esquerda"));
 
         page.swipeRight();

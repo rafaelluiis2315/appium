@@ -69,6 +69,10 @@ public class BasePage {
                 .perform();
     }
 
+    public void scrollDown(){
+        scroll(0.9, 0.1);
+    }
+
     public String getAlertTitle() {
         return getText(By.id("android:id/alertTitle"));
     }
@@ -82,6 +86,11 @@ public class BasePage {
         wai.until(ExpectedConditions.presenceOfElementLocated(
                 By.xpath(String.format("//*[@text='%s']",text))
         ));
+    }
+
+    public void waitElementPresent(By element, int time){
+        WebDriverWait wai = new WebDriverWait(driver, time);
+        wai.until(ExpectedConditions.presenceOfElementLocated(element));
     }
 
     public void swipe(double start, double end) {

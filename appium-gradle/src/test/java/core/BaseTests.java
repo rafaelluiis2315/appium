@@ -26,7 +26,7 @@ public class BaseTests {
     @Rule
     public TestName testName = new TestName();
     private static final URL apkPath = BaseTests.class.getResource("/CTAppium_2_0.apk");
-    private static final File dirScreen = new File("target/screenshots");
+    private static final File dirScreen = new File("build/screenshots");
 
     @BeforeClass
     public static void setUp() {

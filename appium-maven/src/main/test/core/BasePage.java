@@ -78,7 +78,9 @@ public class BasePage {
     }
 
     public String getMessageAlert() {
-        return getText(By.id("android:id/message"));
+        By messageLocator = By.id("android:id/message");
+        waitElementPresent(messageLocator, 10);
+        return getText(messageLocator);
     }
 
     public void waitElementPresentByText(String text, int time){
